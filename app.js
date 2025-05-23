@@ -81,15 +81,15 @@ app.use((req, res, next) => {
     next();
 });
 
-// Routers
-app.use("/listings", listingRouter);
-app.use("/listings/:id/reviews", reviewRouter);
-app.use("/", userRouter);
-
 // --- HOME ROUTE: Redirect root to /listings ---
 app.get("/", (req, res) => {
     res.redirect("/listings");
 });
+
+// Routers
+app.use("/listings", listingRouter);
+app.use("/listings/:id/reviews", reviewRouter);
+app.use("/", userRouter);
 
 // --- 404 HANDLER ---
 app.all("*", (req, res, next) => {
@@ -103,6 +103,8 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render("error.ejs", { message });
 });
 
-app.listen(8080, () => {
-    console.log("server is listening to the port");
+// Use the port provided by Render or default to 8080
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+    console.log(`server is listening on port ${port}`);
 });
