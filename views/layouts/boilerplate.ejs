@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link href="/css/rating.css" rel="stylesheet" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+    <style>
+      /* These may help if the widget is not in an iframe */
+      #bp-web-widget-container,
+      .bp-web-widget-container,
+      iframe[src*="webchat"] {
+        bottom: 60px !important;
+        right: 40px !important;
+        z-index: 9999 !important;
+        position: fixed !important;
+      }
+    </style>
+</head>
+
+<body>
+    <%- include("../includes/navbar.ejs") %>
+
+    <div class="container"> 
+        <%- include("../includes/flash.ejs") %> <%- body %> 
+    </div>
+
+    <%- include("../includes/footer.ejs") %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/script.js"></script>
+
+    <!-- Botpress Chat Bubble Integration -->
+    <script src="https://cdn.botpress.cloud/webchat/v2.4/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/05/23/06/20250523064948-91JXENFO.js"></script>
+    <script>
+      // Wait for the widget to load, then move it
+      window.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+          // Try ID selector
+          var widget = document.getElementById('bp-web-widget-container');
+          if (widget) {
+            widget.style.bottom = '60px';
+            widget.style.right = '40px';
+          }
+          // Try class selector if ID not found
+          var widgetClass = document.querySelector('.bp-web-widget-container');
+          if (widgetClass) {
+            widgetClass.style.bottom = '60px';
+            widgetClass.style.right = '40px';
+          }
+        }, 1500); // Wait for Botpress to inject the widget
+      });
+    </script>
+</body>
+</html>
