@@ -86,9 +86,9 @@ app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
-// --- HOME ROUTE ---
+// --- HOME ROUTE: Redirect root to /listings ---
 app.get("/", (req, res) => {
-    res.render("home"); // Make sure you have views/home.ejs
+    res.redirect("/listings");
 });
 
 // --- 404 HANDLER ---
