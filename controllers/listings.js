@@ -17,8 +17,8 @@ module.exports.index = async (req, res) => {
         filter.category = category;
     }
 
-    const allListings = await Listing.find(filter);
-    res.render("listings/index.ejs", { allListings, category, search });
+    const listings = await Listing.find(filter); // Use 'listings'
+    res.render("listings/index.ejs", { listings, category, search });
 };
 
 // Render the form to create a new listing

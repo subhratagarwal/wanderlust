@@ -1,14 +1,14 @@
-const mongoose= require("mongoose");
-const Schema= mongoose.Schema;
-const Review= require("./reviews.js");
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const Review = require("./reviews.js");
 
 const listingSchema = new Schema({
-    title:{
-        type:String,
-        required:true,
+    title: {
+        type: String,
+        required: true,
     },
     description: String,
-    image:{
+    image: {
         url: String,
         filename: String,
     },
@@ -19,35 +19,36 @@ const listingSchema = new Schema({
         type: String,
         required: true
     },
-    reviews:[
+    reviews: [
         {
             type: Schema.Types.ObjectId,
-            ref:"Review",
+            ref: "Review",
         },
     ],
     owner: {
         type: Schema.Types.ObjectId,
-        ref:"User",
-        required:true
+        ref: "User",
+        required: true
     },
-    geometry:{
+    geometry: {
         type: {
-          type: String,
-          enum: ['Point'],
-          required: true
+            type: String,
+            enum: ['Point'],
+            required: true
         },
         coordinates: {
-          type: [Number],
-          required: true
+            type: [Number],
+            required: true
         }
-      }
-}) ;
-
-listingSchema.post("findIdandDelete", async(req,res)=>{
-    if(listing) {
-        await Review.deleteMany({_id: {$in: listing.reviews}});
     }
 });
 
-const Listing = mongoose.model("listing",listingSchema);
-module.exports=Listing;
+// Correct post middleware for deletion
+listingSchema.post("findOneAndDelete", async function (listing) {
+    if (listing) {
+        await Review.deleteMany({ _id: { $in: listing.reviews } });
+    }
+});
+
+const Listing = mongoose.model("Listing", listingSchema); // Capitalized for convention
+module.exports = Listing;
