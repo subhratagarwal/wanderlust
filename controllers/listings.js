@@ -17,8 +17,26 @@ module.exports.index = async (req, res) => {
         filter.category = category;
     }
 
-    const listings = await Listing.find(filter); // Use 'listings'
-    res.render("listings/index.ejs", { listings, category, search });
+    // --- DEBUG LOGGING ---
+    try {
+        const listings = await Listing.find(filter);
+        console.log("DEBUG: Listings found:", listings.length);
+        if (listings.length > 0) {
+            listings.forEach((l, i) => {
+                console.log(`Listing ${i + 1}:`, {
+                    title: l.title,
+                    category: l.category,
+                    _id: l._id
+                });
+            });
+        } else {
+            console.log("DEBUG: No listings matched the filter:", filter);
+        }
+        res.render("listings/index.ejs", { listings, category, search });
+    } catch (err) {
+        console.error("ERROR fetching listings:", err);
+        res.render("listings/index.ejs", { listings: [], category, search });
+    }
 };
 
 // Render the form to create a new listing
