@@ -140,7 +140,7 @@ Wanderlust/
 
 ## **Deployment**  
 
-The project is deployed on **Render** and can be accessed on [(https://wanderlust-project-ts78.onrender.com/listings)].
+The project is deployed on **Render** and can be accessed on [(https://wanderlust-f.onrender.com/listings)].
 
 ---
 
@@ -169,7 +169,6 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 ---
 
 **Developed by:** SUBHRAT AGARWAL
-
-🔗 **[Live Demo](https://wanderlust-f.onrender.com/listings)**
+Email-    subhratagarwal1234@gmail.com
 Feel free to reach out for collaboration or queries!  
 
