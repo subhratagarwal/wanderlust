@@ -4,6 +4,12 @@
 
 ---
 
+##demo
+
+![App Screenshot](assets/image.jpg)
+
+---
+
 ## **Features**  
 
 1. **Authentication, Authorization, and RBAC**  
@@ -163,5 +169,7 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 ---
 
 **Developed by:** SUBHRAT AGARWAL
+
+🔗 **[Live Demo](https://wanderlust-f.onrender.com/listings)**
 Feel free to reach out for collaboration or queries!  
 
